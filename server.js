@@ -105,5 +105,5 @@ app.post("/api/cancel/:id", async (req,res)=>{
   }catch(e){res.status(500).json({error:e.message});}
 });
 
-app.get("*",(req,res)=>res.sendFile(path.join(__dirname,"public","index.html")));
+app.get(/.*/, (req, res) => {.sendFile(path.join(__dirname,"public","index.html")));
 app.listen(PORT,()=>console.log(`NovaVideo AI Studio: http://localhost:${PORT}`));
