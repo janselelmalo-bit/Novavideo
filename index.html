@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NovaVideo AI</title><link rel="stylesheet" href="style.css">
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#0d0f15"></head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">✦</div><div><b>NovaVideo</b><span>AI Studio</span></div></div>
+    <button class="nav active" data-tab="create">✦ Crear video</button>
+    <button class="nav" data-tab="projects">▣ Mis proyectos</button>
+    <button class="nav" data-tab="library">◈ Biblioteca</button>
+    <button class="nav" data-tab="voices">◉ Voces IA</button>
+    <button class="nav" data-tab="settings">⚙ Configuración</button>
+    <div class="sideBottom"><div class="pro">PRO<br><small>Generación ilimitada*</small></div></div>
+  </aside>
+
+  <main>
+    <header><div><div class="eyebrow">AI VIDEO GENERATOR</div><h1>Crea videos con IA</h1></div>
+      <div class="headerActions"><span class="status"><i></i> Sistema listo</span><button class="avatar">JA</button></div>
+    </header>
+
+    <section id="create" class="tab activeTab">
+      <div class="workspace">
+        <div class="panel promptPanel">
+          <label>Describe tu video</label>
+          <textarea id="prompt" placeholder="Ej.: Un tren antiguo atraviesa un bosque durante una noche lluviosa, estilo cinematográfico, realista, con ambiente melancólico..."></textarea>
+          <div class="chips">
+            <button data-example="Un guerrero anime camina por una ciudad futurista bajo la lluvia, luces de neón, cámara cinematográfica.">🎬 Cinemático</button>
+            <button data-example="Una locomotora antigua llega lentamente a una estación abandonada al atardecer, ambiente nostálgico.">🚂 Nostalgia</button>
+            <button data-example="Un paisaje fantástico con montañas enormes, cascadas y niebla, hiperrealista.">🌄 Fantasía</button>
+          </div>
+          <div class="controls">
+            <div><label>Formato</label><select id="format"><option value="9:16">9:16 · TikTok / Shorts</option><option value="16:9">16:9 · YouTube</option><option value="1:1">1:1 · Social</option></select></div>
+            <div><label>Calidad</label><select id="quality"><option>Alta</option><option>Ultra</option><option>Básica</option></select></div>
+            <div><label>Duración</label><select id="duration"><option>20 s</option><option>30 s</option><option>60 s</option></select></div>
+          </div>
+          <div class="voiceRow"><div><label>Voz</label><select id="voice"><option>Masculina · Cinemática</option><option>Femenina · Narrativa</option><option>Masculina · Profunda</option><option>Femenina · Emocional</option></select></div><button id="previewVoice" class="secondary">▶ Probar voz</button></div>
+          <button id="generate" class="generate">✦ Generar video</button>
+          <div class="hint">La versión inicial funciona en modo demo y deja lista la integración con APIs reales.</div>
+        </div>
+
+        <div class="panel previewPanel">
+          <div class="panelTitle"><span>Vista previa</span><span id="previewFormat">9:16</span></div>
+          <div id="preview" class="preview portrait"><div class="previewIcon">✦</div><h3>Tu video aparecerá aquí</h3><p>Escribe una idea y pulsa Generar video.</p></div>
+          <div class="progressWrap hidden" id="progressWrap"><div class="progressLabel"><span id="progressText">Preparando...</span><b id="progressNum">0%</b></div><div class="bar"><i id="progressBar"></i></div></div>
+        </div>
+      </div>
+
+      <div class="panel timelinePanel">
+        <div class="panelTitle"><span>Guion y escenas</span><button id="scriptBtn" class="secondary">✦ Crear guion con IA</button></div>
+        <div id="scenes" class="emptyScenes">Todavía no hay escenas. Genera un guion para empezar.</div>
+      </div>
+    </section>
+
+    <section id="projects" class="tab"><div class="emptyPage"><div>▣</div><h2>Mis proyectos</h2><p>Tus proyectos generados aparecerán aquí.</p></div></section>
+    <section id="library" class="tab"><div class="emptyPage"><div>◈</div><h2>Biblioteca</h2><p>Imágenes, música, sonidos y videos.</p></div></section>
+    <section id="voices" class="tab"><div class="emptyPage"><div>◉</div><h2>Voces IA</h2><p>Selecciona voces y prueba la narración desde el creador.</p></div></section>
+    <section id="settings" class="tab"><div class="emptyPage"><div>⚙</div><h2>Configuración</h2><p>Las claves de API deben configurarse en el servidor mediante variables de entorno.</p></div></section>
+  </main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script><script>if("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
+</body>
+</html>
